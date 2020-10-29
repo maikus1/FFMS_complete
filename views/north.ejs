@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FFMS</title>
+
+    <!-- Load Leaflet from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"
+    />
+
+    <!-- Load Leaflet from CDN -->
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script
+      src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"
+      integrity="sha512-6LVib9wGnqVKIClCduEwsCub7iauLXpwrd5njR2J507m3A2a4HXJDLMiSZzjcksag3UluIfuW1KzuWVI5n/cuQ=="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster-src.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster-src.js"
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/mapbox-gl/dist/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector/dist/esri-leaflet-vector-debug.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+      integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/date.css" />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css'/>
+    <script src="/javascripts/angular-1.8.0/angular.min.js"></script>
+    <link rel="icon" href="/images/fire_high.png" />
+    <link rel="icon" href="/images/fire_low.png" />
+    <link rel="icon" href="/images/fire_normal.png" />
+
+
+
+
+    <input
+      id="radio1"
+      type="radio"
+      name="css-tabs"
+      onclick="window.location='/contact'"
+    />
+    <input
+      id="radio2"
+      type="radio"
+      name="css-tabs"
+      onclick="window.location='/graphTrend'"
+    />
+    <input
+      id="radio3"
+      type="radio"
+      name="css-tabs"
+      onclick="window.location='/graph'"
+    />
+    <input id="radio4" type="radio" name="css-tabs" checked />
+    <div id="tabs">
+      <img src="/images/logo.png" />
+      <h4 class="textheader1">
+        FFMS
+        <label id="tab1" for="radio1">ติดต่อ</label>
+        <label id="tab2" for="radio2">แนวโน้ม</label>
+        <label id="tab3" for="radio3">สถิติ</label>
+        <label id="tab4" for="radio4">หน้าหลัก</label>
+      </h4>
+      <h1 class="textheader2">
+        Forest Fire Monitoring System With Hotspot Data From Satellite Images
+      </h1>
+    </div>
+
+    <div id="mapid"></div>
+    <div id="time-ranges" class="leaflet-bar">
+      <form action="/north/" id="date">
+        <label for="from">
+          วันที่ :
+          <input id="date" type="date" name="date" />
+        </label>
+        <input type="submit" value="ค้นหา" />
+      </form>
+    </div>
+    <div class="centerregion">
+        <input type="button" class="buttonregion" value="ดูไฟป่าทั่วประเทศ" onclick="homepage()"> 
+    </div>
+
+    <input
+      type="image"
+      src="/images/line-icon.png"
+      alt="Submit"
+      class="line-icon line-out"
+      id="myBtn"
+    />
+    <div id="myModal" class="modal">
+      <div class="modal-content" style="max-width: 350px;">
+        <span class="close">&times;</span>
+        <FORM NAME="INPUT"><p class="impact" style="text-align: center;">เลือกจังหวัด<br>
+          <select name="list" size="1" onchange="QRline_P(this)" id='QR_P'>
+          <option value="0"></option>
+          <option value="1">เชียงราย<br>
+          <option value="2">เชียงใหม่<br>
+          <option value="3">ลำปาง<br>
+          <option value="4">แพร่<br>
+          <option value="5">น่าน<br>
+          <option value="6">แม่ฮ่องสอน<br>
+          <option value="7">พะเยา<br>
+          <option value="8">ลำพูน<br>
+          <option value="9">อุตรดิตถ์<br>
+          </select>
+      </FORM>
+      <div id="hidden_chiangrai">
+        <FORM NAME="INPUT"><p class="impact" style="text-align: center;">เลือกอำเภอ<br>
+          <select name="list" size="1" onchange="QRline_D(this)" id='QR_D'>
+            <option></option>
+          <option value="1">เมืองเชียงราย<br>
+          <option value="2">เชียงของ<br>
+          <option value="3">เชียงแสน<br>
+          <option value="4">ดอยหลวง<br>
+          <option value="5">ขุนตาล<br>
+          <option value="6">แม่จัน<br>
+          <option value="7">แม่ฟ้าหลวง<br>
+          <option value="8">แม่ลาว<br>
+          <option value="9">แม่สาย<br>
+          <option value="10">แม่สรวย<br>
+          <option value="11">ป่าแดด<br>
+          <option value="12">พาน<br>
+          <option value="13">พญาเม็งราย<br>
+          <option value="14">เทิง<br>
+          <option value="15">เวียงชัย<br>
+          <option value="16">เวียงเชียงรุ้ง<br>
+          <option value="17">เวียงแก่น<br>
+          <option value="18">เวียงป่าเป้า<br>
+          </select>
+      </FORM>
+      </div>
+      <div id="hidden_chiangmai" style="text-align: center;">รออัพเดตเชียงใหม่</div>
+      <div id="hidden_lumpang" style="text-align: center;">รออัพเดตลำปาง</div>
+      <div id="hidden_phrae" style="text-align: center;">รออัพเดตแพร่</div>
+      <div id="hidden_nan" style="text-align: center;">รออัพเดตน่าน</div>
+      <div id="hidden_phayao" style="text-align: center;">รออัพเดตพะเยา</div>
+      <div id="hidden_lamphun" style="text-align: center;">รออัพเดตลำพูน</div>
+      <div id="hidden_uttaradit" style="text-align: center;">รออัพเดตอุตรดิตถ์</div>
+      <div id="hidden_maehongson" style="text-align: center;">รออัพเดตแม่ฮ่องสอน</div>
+
+      <div id="hidden_QRchiangrai">
+        <input id='QR_Pro'
+        type="image"
+        src="/images/QRcode.jpg"
+        style="width: 350px; height: 350px; margin: auto auto;"
+      />
+      </div>
+        <br />
+      </div>
+    </div>
+
+    <div class="textbox-line tri-right borderq btm-right-in">
+      <p class="impact">รับการแจ้งเตือนผ่านไลน์</p>
+    </div>
+    <div class="footer"></div>
+    
+  
+  
+</body>
+
+
+    <script>
+      var app = angular.module("FFMS", []);
+      app.controller("IndexController", function ($scope, $http) {});
+    </script>
+  </head>
+  <body ng-app="FFMS" ng-controller="IndexController">
+    <script>
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementsByClassName("close")[0];
+
+      function QRline_P(select) {
+        if(select.value==1){
+            document.getElementById('hidden_chiangrai').style.display = "block";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==2){
+            document.getElementById('hidden_chiangmai').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==3){
+            document.getElementById('hidden_lumpang').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==4){
+            document.getElementById('hidden_phrae').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==5){
+            document.getElementById('hidden_nan').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==6){
+            document.getElementById('hidden_maehongson').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+          }else if(select.value==7){
+            document.getElementById('hidden_phayao').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==8){
+            document.getElementById('hidden_lamphun').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==9){
+            document.getElementById('hidden_uttaradit').style.display = "block";
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }else if(select.value==0){
+            document.getElementById('hidden_chiangrai').style.display = "none";
+            document.getElementById('hidden_chiangmai').style.display = "none";
+            document.getElementById('hidden_lumpang').style.display = "none";
+            document.getElementById('hidden_phrae').style.display = "none";
+            document.getElementById('hidden_nan').style.display = "none";
+            document.getElementById('hidden_phayao').style.display = "none";
+            document.getElementById('hidden_lamphun').style.display = "none";
+            document.getElementById('hidden_uttaradit').style.display = "none";
+            document.getElementById('hidden_maehongson').style.display = "none";
+          }
+          var x = document.getElementById("QR_P");
+          var i = x.selectedIndex;
+          document.getElementById("QR_Pro").innerHTML = x.options[i].text;
+          return x.options[i].text
+        }
+
+        function QRline_D(select) {
+          if(select.value==1){
+            document.getElementById('hidden_QRchiangrai').style.display = "block";
+          }else{
+            document.getElementById('hidden_QRchiangrai').style.display = "none";
+          }
+
+          var pro = QRline_P();
+          var x = document.getElementById("QR_D");
+          var i = x.selectedIndex;
+          document.getElementById("QR_Dis").innerHTML = x.options[i].text;
+          return x.options[i].text
+        }
+
+        function QRline_ans(){
+          var pro = QRline_P();
+          var dis = QRline_D();
+        }
+
+      function homepage(){
+        location.replace("http://localhost:3000/")
+      }
+
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      function MarkerCheck(marker,visusl_icon_normal,visusl_icon_high,visusl_icon_low,checks){
+                if(marker.satellite == 'A'){
+                  instrument = 'aqua';
+                }else if(marker.satellite == '1'){
+                  instrument = 'noaa';
+                }else if(marker.satellite == 'N'){
+                  instrument = 'viirs';
+                }else if(marker.satellite == 'T'){
+                  instrument = 'terra';
+                }
+
+                if(checks == 1){
+                  if(((marker.confidence == 'high')||(marker.confidence>=70))){
+                    if(marker.confidence == 'high'){
+                      marker.confidence = 80;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_high}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }else if((marker.confidence == 'nominal')||(marker.confidence>=30)){
+                    if(marker.confidence == 'nominal'){
+                      marker.confidence = 50;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_normal}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }else{
+                    if(marker.confidence == 'low'){
+                      marker.confidence = 20;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }
+                }else{
+                  marker.confidence = 0;
+                  return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                }
+            }
+
+      this.latlng_center = new L.LatLng(18.4539, 100.2062 );
+            this.mymap = L.map('mapid', {
+                continuousWorld: true,
+                worldCopyJump: true,
+                zoomControl: true,
+                maxZoom : 20,
+                minZoom: 7.5,
+                attributionControl: false,
+                zoomControl: true,
+            });
+
+            this.mymap.setView(this.latlng_center, 5);
+            var layer = L.esri.basemapLayer('Topographic').addTo(this.mymap);
+
+            this.check = [<%= check %>];
+            this.iconLeft = <%- data_fire %>;
+            date_req = <%- date_req %>;
+            var markers = L.markerClusterGroup();
+
+            for(var index in this.iconLeft){
+                var marker = this.iconLeft[index]
+                var checks = this.check[index];
+                var visusl_icon_high = L.icon({iconUrl:'/images/fire_high.png',iconSize: [20, 20]  });
+                var visusl_icon_normal = L.icon({iconUrl:'/images/fire_normal.png',iconSize: [20, 20]  });
+                var visusl_icon_low = L.icon({iconUrl:'/images/fire_low.png',iconSize: [20, 20]  });
+                markers.addLayer(MarkerCheck(marker,visusl_icon_normal,visusl_icon_high,visusl_icon_low,checks));
+            }
+
+            this.mymap.addLayer(markers);
+            var timeForm = document.getElementById('date');
+            
+    </script>
+  </body>
+</html>

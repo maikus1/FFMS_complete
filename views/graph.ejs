@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FFMS</title>
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+
+    <!-- Load Leaflet from CDN -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.3.2/dist/esri-leaflet.js"
+    integrity="sha512-6LVib9wGnqVKIClCduEwsCub7iauLXpwrd5njR2J507m3A2a4HXJDLMiSZzjcksag3UluIfuW1KzuWVI5n/cuQ=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster-src.js"
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster-src.js"
+    crossorigin=""></script>  
+    <script src="https://unpkg.com/mapbox-gl/dist/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector/dist/esri-leaflet-vector-debug.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kanit&subset=thai,latin' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/graph.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="/javascripts/angular-1.8.0/angular.min.js"></script>
+    <link rel="icon" href="/images/fire.png">
+
+
+    <input id="radio1" type="radio" name="css-tabs" onclick="window.location='/contact'">
+    <input id="radio2" type="radio" name="css-tabs" onclick="window.location='/graphTrend'">
+    <input id="radio3" type="radio" name="css-tabs" checked>
+    <input id="radio4" type="radio" name="css-tabs" onclick="window.location='/'">
+    <div id="tabs">
+      <img src="/images/logo.png">
+      <h4 class="textheader1">FFMS      
+        <label id="tab1" for="radio1">ติดต่อ</label>
+        <label id="tab2" for="radio2">แนวโน้ม</label>
+        <label id="tab3" for="radio3">สถิติ</label>
+        <label id="tab4" for="radio4">หน้าหลัก</label></h4>
+      <h1 class="textheader2">Forest Fire Monitoring System With Hotspot Data From Satellite Images</h1>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row">
+                <div class="container-fluid d-flex justify">
+                    <div class="col-sm-8 col-md-6">
+                        <div>         
+                                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:0px;height:1000000px;left:0;top:0"></div>
+                                    </div>
+                                </div> <canvas id="chart-line" width="600" height="250" class="chartjs-render-monitor" style="display: block; width: 299px; height: 200px;"></canvas>
+                        </div><canvas id="polar-chart" width="900" height="420"></canvas>
+                    </div>
+                    <div class="box">
+                        
+                        <div ng-app="FFMS">
+                          <div class="box"><div style="text-align: center;">
+                            <label class ="textyearcount">ไฟป่าประจำวันที่ {{ daynow }}</label>
+                          </div>
+                          <div style="margin-left: 150px;">
+                            วันนี้เกิดไฟป่า : {{ count_day }}
+                          </div>
+                        </div>
+
+                        <div class="box"><div style="text-align: center;">
+                          <label class ="textyearcount">อันดับการเกิดไฟป่าในปี {{ year }}</label>
+                        </div>
+                        <div style="margin-left: 150px;">
+                          อันดับ 1 : {{ rank1 }}
+                          <br>
+                          อันดับ 2 : {{ rank2 }}
+                          <br>
+                          อันดับ 3 : {{ rank3  }}
+                          <br>
+                          อันดับ 4 : {{ rank4 }}
+                          <br>
+                          อันดับ 5 : {{ rank5 }}
+                          <br>
+                          เกิดไฟป่าทั้งหมดในประเทศไทย : {{ count_year }}
+                        </div>
+                        </div>
+                        
+                          <div class="box"><div style="text-align: center;">
+                            <label class ="textyearcount">จำนวนการเกิดไฟป่าในปี {{ year }}</label>
+                          </div>
+                          <div style="margin-left: 150px;">
+                            มกราคม : {{ January }}
+                            <br>
+                            กุมภาพันธ์ : {{ February }}
+                            <br>
+                            มีนาคม : {{ March  }}
+                            <br>
+                            เมษายน : {{ April }}
+                            <br>
+                            พฤษภาคม: {{ May }}
+                            <br>
+                            มิถุนายน : {{ June }}
+                            <br>
+                            กรกฎาคม : {{ July }}
+                            <br>
+                            สิงหาคม : {{ August }}
+                            <br>
+                            กันยายน : {{ September }}
+                            <br>
+                            ตุลาคม : {{ October }}
+                            <br>
+                            พฤศจิกายน : {{ November }}
+                            <br>
+                            ธันวาคม: {{ December }}
+                          </div>
+                          </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container d-flex justify-container-center">
+
+    <div class="footer"></div>
+
+
+    <script>
+      var app = angular.module('FFMS', []);
+      app.controller('IndexController', function($scope, $http) {
+        $scope.count_day = count_day[0].count;
+        $scope.daynow = daynow;
+        $scope.year = Y;
+        $scope.January = fire_cc[0];
+        $scope.February = fire_cc[1];
+        $scope.March = fire_cc[2];
+        $scope.April = fire_cc[3];
+        $scope.May = fire_cc[4];
+        $scope.June = fire_cc[5];
+        $scope.July = fire_cc[6];
+        $scope.August = fire_cc[7];
+        $scope.September = fire_cc[8];
+        $scope.October = fire_cc[9];
+        $scope.November = fire_cc[10];
+        $scope.December = fire_cc[11];
+        $scope.count_year = count[0].year;
+        $scope.rank1 = rank[0].province;
+        $scope.rank2 = rank[1].province;
+        $scope.rank3 = rank[2].province;
+        $scope.rank4 = rank[3].province;
+        $scope.rank5 = rank[4].province;
+      });
+    </script>
+
+  </head>
+  <body ng-app='FFMS' ng-controller='IndexController'>
+    <script>
+      
+        var Bangkok = new  Date().toLocaleString("th-TH", {timeZone: "Asia/Bangkok"});
+        var now = new Date();
+        var D = now.getDate();
+        var M = now.getMonth()+1;
+        var Y = now.getFullYear();
+        
+        this.count = <%- count %>;
+        rank = <%- rank %>;
+        count_day = <%- count_day %>;
+        daynow = ""+D+"-"+M+"-"+Y+"";
+        // console.log(daynow);
+
+        var fire_cc =[]
+        var cc = [];
+        percent = [];
+        var total;
+
+
+        for(i=0;i<=11;i++){
+            if(count[i].month == null){
+                cc[i] = parseInt(count[i].month);
+                cc[i] = 0;
+            }else{
+                cc[i] = parseInt(count[i].month);
+            }
+        }total = cc[0]+cc[1]+cc[2]+cc[3]+cc[4]+cc[5]+cc[6]+cc[7]+cc[8]+cc[9]+cc[10]+cc[11];
+        for(j=0;j<=11;j++){
+            percent[j] = (cc[j]/total)*100;
+        }
+
+        for(i=0;i<=11;i++){
+            fire_cc[i] = cc[i];
+            if(fire_cc[i] == 0){
+                fire_cc[i] = 'ยังไม่เกิดไฟป่า'
+            }if(count_day[0].count == 0){
+              count_day[0].count = 'ยังไม่เกิดไฟป่า'
+            }
+        }
+
+
+        $(document).ready(function() {
+        var ctx = $("#chart-line");
+        var myLineChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+                datasets: [{
+                    data: [percent[0].toFixed(2), percent[1].toFixed(2), percent[2].toFixed(2), percent[3].toFixed(2), percent[4].toFixed(2), percent[5].toFixed(2), percent[6].toFixed(2), percent[7].toFixed(2), percent[8].toFixed(2), percent[9].toFixed(2), percent[10].toFixed(2), percent[11].toFixed(2), ],
+                    backgroundColor: ["rgba(255, 0, 0, 0.5)", "rgba(100, 255, 0, 0.5)", "rgba(200, 50, 255, 0.5)", "rgba(0, 100, 255, 0.5)", "rgba(200, 100, 255, 0.5)", "rgba(0, 200, 255, 0.5)", "rgba(200, 0, 255, 0.5)", "rgba(150, 100, 100, 0.5)", "rgba(200, 0, 200, 0.5)", "rgba(100, 100, 100, 0.5)", "rgba(150, 255, 0, 0.5)", "rgba(100, 255, 150, 0.5)"]
+                }]
+            },
+            options: {
+                title: {
+                    text: "ไฟป่าปี "+Y,
+                    display: true,
+                    fontSize: 20,
+                    fontColor: '#000'
+                }
+                
+            }
+        });
+    });
+
+    new Chart(document.getElementById("polar-chart"), {
+    type: 'polarArea',
+    data: {
+      labels: [rank[0].province, rank[1].province, rank[2].province, rank[3].province, rank[4].province],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["rgba(100, 100, 100, 0.5)", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [rank[0].count,rank[1].count,rank[2].count,rank[3].count,rank[4].count]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'จังหวัดที่เกิดไฟป่ามากที่สุด 5 อันดับแรกในปี '+Y,
+        fontSize: 20,
+        fontColor: '#000'
+      }
+    }
+});
+    </script>
+  </body>
+</html>

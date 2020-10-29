@@ -1,0 +1,407 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+#loader {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: url('../images/loading.gif') center no-repeat white;
+  transition: opacity 0.3s;
+}
+
+
+#mapid {
+  height: 90%;
+}
+
+
+.buttonregion {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 25px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 auto;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.centerregion {
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  left: 90%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.textdate {
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.89);
+  font-family: "Kanit", sans-serif;
+}
+
+img {
+  width: 120px;
+  height: 80px;
+  position: absolute;
+}
+
+.textbox-line {
+  position: absolute;
+  bottom: 200px;
+  right: 50px;
+  z-index: 1000;
+  padding: 1em;
+  width: 230px;
+  height: 70px;
+
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  animation: 10s fadeIn;
+  animation-fill-mode: forwards;
+  display: inline-block;
+  background-color: rgba(250, 198, 131, 0.89);
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+p.impact {
+  font-weight: 900;
+  padding: 0em;
+}
+
+.borderq {
+  border: 8px solid #666;
+}
+
+.tri-right.borderq.btm-right-in:before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 30px;
+  bottom: -40px;
+  border: 20px solid;
+  border-color: #666 #666 transparent transparent;
+  z-index: 1100;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 1;
+  }
+}
+
+.line-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  padding: 1em;
+  width: 150px;
+  height: 150px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.line-out:hover {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  padding: 1em;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  display: inline-block;
+}
+
+.textyearcount {
+  font-size: 20px;
+  color: black;
+}
+
+.textheader1 {
+  font-size: 2vw;
+  color: white;
+  text-indent: 110px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.textheader2 {
+  font-size: 1vw;
+  color: white;
+  text-indent: 110px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.textheader3 {
+  font-size: 40px;
+  color: black;
+  text-indent: 110px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid white;
+}
+
+.box1 {
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid white;
+}
+
+.footer {
+  background: #2b2a28;
+  width: 100%;
+  height: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+input[name="css-tabs"] {
+  display: none;
+}
+a {
+  color: #f29a77;
+}
+#tabs {
+  padding: 0 0 0 0px;
+  width: calc(100%);
+  margin-right: -50px;
+  background: #2b2a28;
+  height: 85px;
+  border-bottom: 7px solid #eb4e01;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+#tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -100;
+  width: 100%;
+  right: 0;
+  margin-top: 0px;
+  height: 60px;
+  background: #2b2a28;
+  border-bottom: 5px solid #eb4e01;
+}
+#tabs::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 0;
+  height: 0px;
+  width: 100px;
+  background: #eb4e01;
+  transition: transform 400ms;
+}
+#tabs label {
+  position: relative;
+  z-index: 100;
+  display: block;
+  float: right;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100px;
+  height: 100%;
+  border-right: 1px dotted #575654;
+  cursor: pointer;
+}
+#tabs label:first-child {
+  border-right: 1px dotted #575654;
+}
+#tabs label::before {
+  content: "";
+  display: block;
+  height: 40px;
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: invert(40%);
+  margin: 10px auto;
+}
+#tab1::before {
+  background-image: url(https://image.flaticon.com/icons/svg/1250/1250663.svg);
+}
+#tab2::before {
+  background-image: url(https://image.flaticon.com/icons/svg/3121/3121571.svg);
+}
+#tab3::before {
+  background-image: url(https://image.flaticon.com/icons/svg/603/603097.svg);
+}
+#tab4::before {
+  background-image: url(https://image.flaticon.com/icons/svg/846/846551.svg);
+}
+#radio1:checked ~ #tabs #tab1::before,
+#radio2:checked ~ #tabs #tab2::before,
+#radio3:checked ~ #tabs #tab3::before,
+#radio4:checked ~ #tabs #tab4::before {
+  filter: invert(100%);
+}
+
+#radio1:checked ~ #content #content1,
+#radio2:checked ~ #content #content2,
+#radio3:checked ~ #content #content3,
+#radio4:checked ~ #content #content4 {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 15%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  display: none;
+  background-color: white;
+  margin: auto;
+  position: relative;
+  padding: 10px;
+  outline: 0;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {
+    width: 8.33%;
+  }
+  .col-s-2 {
+    width: 16.66%;
+  }
+  .col-s-3 {
+    width: 25%;
+  }
+  .col-s-4 {
+    width: 33.33%;
+  }
+  .col-s-5 {
+    width: 41.66%;
+  }
+  .col-s-6 {
+    width: 50%;
+  }
+  .col-s-7 {
+    width: 58.33%;
+  }
+  .col-s-8 {
+    width: 66.66%;
+  }
+  .col-s-9 {
+    width: 75%;
+  }
+  .col-s-10 {
+    width: 83.33%;
+  }
+  .col-s-11 {
+    width: 91.66%;
+  }
+  .col-s-12 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+}
