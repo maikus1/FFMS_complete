@@ -72,7 +72,7 @@ function postdata() {
                     }else if((data[index].confidence == 'nominal')||(data[index].confidence >= 30)){
                       checktext[index] = 'โอกาสปานกลาง';
                     }else{
-                      checktext[index] = 'โอกาสต่ำ';
+                      checktext[index] = 'โอกาสต่ำ ';
                     }
                   }
                   linebot(data,checktext)
