@@ -12,11 +12,12 @@ const post = new Client({
 
 post.connect();
 
-var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })
+var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })// time-zone
 var now = new Date(Bangkok);
 var D = now.getDate();
 var M = now.getMonth()+1;
 var Y = now.getFullYear();
+//checks day,month,year
 if(M>=1 && M<=9){
     M = '0'+M;
     }
@@ -38,28 +39,28 @@ if(M==02){
 
 var datetime = Y+'-'+M+'-'+D;  
 
-/* GET users listing. */
+/* GET graph page. */
 router.get('/', function(req, res) {
-  post.query("SELECT DISTINCT * FROM count_ym where year_name = '"+Y+"' ORDER BY month_name ASC")
+  post.query("SELECT DISTINCT * FROM count_ym where year_name = '"+Y+"' ORDER BY month_name ASC") // query count year
   .then(results => {
-          count= JSON.stringify(results.rows);
+      count= JSON.stringify(results.rows);
           
-          post.query("SELECT COUNT(DISTINCT (plg.adm2_th,plg.adm1_th,pts.latitude,pts.longitude,acq_time+'7 hour'::interval,pts.satellite_date)) \
-          FROM thailand plg JOIN FIRMS_auto pts \
-          ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) \
-          AND pts.satellite_date = '"+datetime+"' \
-          ")
-          .then(results =>  {
-              count_day= JSON.stringify(results.rows);
+      // query count days
+      post.query("SELECT COUNT(DISTINCT (plg.adm2_th,plg.adm1_th,pts.latitude,pts.longitude,acq_time+'7 hour'::interval,pts.satellite_date)) \
+      FROM thailand plg JOIN FIRMS_auto pts \
+      ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) \
+      AND pts.satellite_date = '"+datetime+"' \
+      ").then(results =>  {
+          count_day= JSON.stringify(results.rows);
 
-              post.query("SELECT DISTINCT * FROM count_rank ORDER BY rank ASC \
-               ")
-              .then(results => {
-                  count_data = JSON.stringify(results.rows);
-                  res.render('graph',{count: count, count_day: count_day,rank: count_data});
-                      })
-                })
-          })
+          // query rank top 5
+          post.query("SELECT DISTINCT * FROM count_rank ORDER BY rank ASC \
+          ").then(results => {
+              count_data = JSON.stringify(results.rows);
+              res.render('graph',{count: count, count_day: count_day,rank: count_data});
+            })// end query rank top 5
+        })// end query count days
+    })// end query count year
 });
 
 

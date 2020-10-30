@@ -13,17 +13,17 @@ const post = new Client({
 
 post.connect();
 
-var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })
+var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })//time zone
 var now = new Date(Bangkok);
 var Y = now.getFullYear();
-var Yold = Y-1;
+var Yold = Y-1; // year before
 
-/* GET users listing. */
 router.get('/', function(req, res) {
   post.query("SELECT DISTINCT * FROM count_ym where year_name between '"+Yold+"' AND '"+Y+"' ORDER BY year_name,month_name ASC")
   .then(results => {
-          res.render('graphTrend',{count: JSON.stringify(results.rows)});
-          })
+    //query count new year and before year
+    res.render('graphTrend',{count: JSON.stringify(results.rows)});
+  })//end query count new year and before year
 });
 
 

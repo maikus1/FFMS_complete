@@ -22,6 +22,7 @@ function rank(){
                 AND pts.satellite_date BETWEEN '"+Y+"-01-01' AND '"+Y+"-12-31' GROUP BY plg.adm1_th ORDER BY count_data DESC limit 5 \
                 ")
                 .then(results => {
+
             count= results.rows;
             post.query("UPDATE count_rank SET province = '"+count[0].adm1_th+"' where rank = 1 ");
             post.query("UPDATE count_rank SET count = '"+count[0].count_data+"' where rank = 1 ");
@@ -40,7 +41,7 @@ function rank(){
 
             console.log("UPDATE RANK!!");
 
-})
+    })
 }
 
 setInterval(rank,180000);

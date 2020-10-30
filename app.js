@@ -12,7 +12,6 @@ var indexRouter = require('./routes/index');
 var northRouter = require('./routes/north');
 var graphRouter = require('./routes/graph');
 var graphTrendRouter = require('./routes/graphTrend');
-var contactRouter = require('./routes/contact');
 var webhookRouter = require('./routes/msgline');
 
 var app = express();
@@ -32,7 +31,6 @@ app.use('/', indexRouter);
 app.use('/north', northRouter);
 app.use('/graph', graphRouter);
 app.use('/graphTrend', graphTrendRouter);
-app.use('/contact', contactRouter);
 app.use('/msg', webhookRouter);
 
 // catch 404 and forward to error handler

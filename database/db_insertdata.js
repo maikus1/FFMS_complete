@@ -247,7 +247,6 @@ function data(){
     setInterval(viirs_auto, 300000);
     setInterval(suomi_auto, 300000);
     setInterval(modis_c6_auto, 300000);
-    // console.log(dayr);
 }
 
 data(); 
