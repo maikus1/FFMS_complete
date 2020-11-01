@@ -366,8 +366,28 @@
                   instrument = 'terra';
                 }
 
-                if(checks == 1){
-                  if(((marker.confidence == 'high')||(marker.confidence>=70))){
+                if(marker.ans == 0){
+                  if(((marker.confidence == 'high')||(marker.confidence>=80))){
+                    if(marker.confidence == 'high'){
+                      marker.confidence = 80;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_high}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }else if((marker.confidence == 'nominal')||(marker.confidence>=50)){
+                    if(marker.confidence == 'nominal'){
+                      marker.confidence = 50;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_normal}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }else if((marker.confidence == 'low')||(marker.confidence>=20)){
+                    if(marker.confidence == 'low'){
+                      marker.confidence = 20;
+                    }
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }else{
+                    marker.confidence = 0;
+                    return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
+                  }
+                }else{
+                  if(((marker.confidence == 'high')||(marker.confidence>=80))){
                     if(marker.confidence == 'high'){
                       marker.confidence = 80;
                     }
@@ -382,13 +402,10 @@
                       marker.confidence = 20;
                     }
                     return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
-                  }
-                }else{
-                  marker.confidence = 0;
-                  return  L.marker([ marker.latitude , marker.longitude], {icon: visusl_icon_low}).bindPopup("<div class='popup_map'><p>จังหวัด: "+marker.adm1_th+"<br/>อำเภอ:"+marker.adm2_th+"<br/> ละติจูด :"+marker.latitude+"<br/> ลองจิจูด: "+marker.longitude+"<br/> วันที่: "+marker.date+"<br/> เวลา: "+marker.insert_time+"<br/> ดาวเทียม: "+instrument+"<br/> ค่าความแม่นยำ :"+marker.confidence+" %")
-                }
+               }
             }
-
+          }
+          
       this.latlng_center = new L.LatLng(13.501167, 101.751750 );
             this.mymap = L.map('mapid', {
                 continuousWorld: true,
@@ -403,14 +420,12 @@
             this.mymap.setView(this.latlng_center, 5);
             var layer = L.esri.basemapLayer('Topographic').addTo(this.mymap);
 
-            this.check = [ <%- check %> ];
             this.iconLeft = <%- data_fire %>;
             date_req = <%- date_req %>;
             var markers = L.markerClusterGroup();
 
             for(var index in this.iconLeft){
                 var marker = this.iconLeft[index];
-                var checks = this.check[index];
                 var visusl_icon_high = L.icon({iconUrl:'/images/fire_high.png',iconSize: [20, 20]  });
                 var visusl_icon_normal = L.icon({iconUrl:'/images/fire_normal.png',iconSize: [20, 20]  });
                 var visusl_icon_low = L.icon({iconUrl:'/images/fire_low.png',iconSize: [20, 20]  });

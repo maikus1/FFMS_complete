@@ -45,23 +45,16 @@ router.get('/', function(req, res) {
         }else{
             date_req = date_req;
         }
-
+           
         post.query("SELECT DISTINCT  pts.brightness,pts.bright_t31,pts.scan,pts.track,pts.frp,pts.confidence,plg.adm2_th,plg.adm1_th,pts.latitude,pts.longitude,acq_time+'7 hour'::interval AS insert_time,to_char(pts.satellite_date, 'YYYY-MM-DD') AS date,pts.satellite \
         FROM thailand plg JOIN FIRMS_auto pts \
         ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom)\
         AND pts.satellite_date = '"+date_req+"'  AND plg.adm1_pcode between 'TH50' AND 'TH58'")
         .then(results => {
             // query data north
-            var fire = JSON.stringify(results.rows)
-            ai.dataa(results.rows) // calculate ai
-            var checks = ai.ans_data; // resulte calculate ai
-            var count_f; // count data
-            var count_ai; // count ai
-            for(count_f in results.rows){};
-            for(count_ai in ai.ans_data){};
-            if(count_ai == count_f){
-                res.render('north',{ data_fire :fire,date_req : date_req,check : checks});
-            }
+            ai.dataa(results.rows)// calculate ai neural network
+            var fire = JSON.stringify(ai.data)
+            res.render('north',{ data_fire :fire,date_req : date_req});
         })// end query data north
 });
 

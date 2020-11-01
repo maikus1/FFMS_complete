@@ -1,18 +1,15 @@
-var ans_data = [];
 function dataa(results){
-    
     var data = results;
     if(data[0] === undefined){
         data = 0
     }else{
         for(var index in data){
-            ans_data[index] = output(data[index]);
-            
+            data[index].ans = output(data[index]);
         }
     }
+     exports.data = data;
 }
 
-exports.ans_data = ans_data;
 
 function activate (x){
     return x
@@ -123,7 +120,7 @@ function output(data){
     }else if(data.confidence == '2.7'){
         return node_50(data);
     }else{
-        return 2;
+        return 1;
     }
 }
 
@@ -194,7 +191,7 @@ function node_0(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -266,7 +263,7 @@ function node_1(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -338,7 +335,7 @@ function node_2(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -410,7 +407,7 @@ function node_3(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -482,7 +479,7 @@ function node_4(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -554,7 +551,7 @@ function node_5(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -626,7 +623,7 @@ function node_6(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -698,7 +695,7 @@ function node_7(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -770,7 +767,7 @@ function node_8(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -842,7 +839,7 @@ function node_9(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -914,7 +911,7 @@ function node_10(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -986,7 +983,7 @@ function node_11(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1058,7 +1055,7 @@ function node_12(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1130,7 +1127,7 @@ function node_13(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1202,7 +1199,7 @@ function node_14(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1274,7 +1271,7 @@ function node_15(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1346,7 +1343,7 @@ function node_16(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1418,7 +1415,7 @@ function node_17(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1490,7 +1487,7 @@ function node_18(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1562,7 +1559,7 @@ function node_19(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1634,7 +1631,7 @@ function node_20(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1706,7 +1703,7 @@ function node_21(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1778,7 +1775,7 @@ function node_22(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1850,7 +1847,7 @@ function node_23(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1922,7 +1919,7 @@ function node_24(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -1994,7 +1991,7 @@ function node_25(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2066,7 +2063,7 @@ function node_26(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2138,7 +2135,7 @@ function node_27(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2210,7 +2207,7 @@ function node_28(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2282,7 +2279,7 @@ function node_29(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2354,7 +2351,7 @@ function node_30(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2426,7 +2423,7 @@ function node_31(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2499,7 +2496,7 @@ function node_32(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2571,7 +2568,7 @@ function node_33(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2643,7 +2640,7 @@ function node_34(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2715,7 +2712,7 @@ function node_35(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2787,7 +2784,7 @@ function node_36(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2859,7 +2856,7 @@ function node_37(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -2931,7 +2928,7 @@ function node_38(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3003,7 +3000,7 @@ function node_39(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3075,7 +3072,7 @@ function node_40(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3147,7 +3144,7 @@ function node_41(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3219,7 +3216,7 @@ function node_42(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3291,7 +3288,7 @@ function node_43(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3364,7 +3361,7 @@ function node_44(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3436,7 +3433,7 @@ function node_45(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3508,7 +3505,7 @@ function node_46(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3580,7 +3577,7 @@ function node_47(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3652,7 +3649,7 @@ function node_48(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3724,7 +3721,7 @@ function node_49(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3796,7 +3793,7 @@ function node_50(data){
         sum1 = node[51]+node[52]+node[53]+node[54]+node[55]+node[56]+node[57]+node[58]+node[59]+node[60]+node[61]+node[62]+node[63]+node[64]+node[65]+node[66]+node[67]+node[68]+node[69]+node[70];
         sum2 = sum1+node[71]+node[72]+node[73]+node[74]+node[75]+node[76]+node[77]+node[78]+node[79]
         sum = activate(sum2)
-        if(sum < Threshold){
+        if(sum > Threshold){
             return 0;
         }else{
             return 1;
@@ -3812,16 +3809,16 @@ function node_51(data){
     // Attrib track    -5.741621337199991
     // Attrib bright_t31    24.039515642564563
     // Attrib frp    21.138099532796975
-    data.latitude = data.latitude * (-4.730260860582049);
-    data.longitude= data.longitude * (-1.2424156595188605);
-    data.brightness  = data.brightness * (-10.266379718895474);
-    data.scan = data.scan * (-5.018806057657536);
-    data.track = data.track * (-5.741621337199991);
-    data.bright_t31 = data.bright_t31 * (24.039515642564563);
-    data.frp = data.frp * (21.138099532796975);
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude * (-4.730260860582049);
+    var longitude= data.longitude * (-1.2424156595188605);
+    var brightness  = data.brightness * (-10.266379718895474);
+    var scan = data.scan * (-5.018806057657536);
+    var track = data.track * (-5.741621337199991);
+    var bright_t31 = data.bright_t31 * (24.039515642564563);
+    var frp = data.frp * (21.138099532796975);
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
      sum = activate(sum)
-     if(sum < Threshold){
+     if(sum > Threshold){
          return 0;
      }else{
          return 1;
@@ -3837,16 +3834,16 @@ function node_52(data){
     // Attrib track    -2.6973327345591267
     // Attrib bright_t31    10.654430974863885
     // Attrib frp    0.2501820753899223
-    data.latitude = data.latitude *(1.6449299964878592);
-    data.longitude = data.longitude * (-0.5690145051808774);
-    data.brightness = data.brightness * (38.3202136659834);
-    data.scan = data.scan * (-2.809308819976264);
-    data.track = data.track * (-2.6973327345591267);
-    data.bright_t31 = data.bright_t31 * (10.654430974863885)
-    data.frp = data.frp * (0.2501820753899223)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(1.6449299964878592);
+    var longitude = data.longitude * (-0.5690145051808774);
+    var brightness = data.brightness * (38.3202136659834);
+    var scan = data.scan * (-2.809308819976264);
+    var track = data.track * (-2.6973327345591267);
+    var bright_t31 = data.bright_t31 * (10.654430974863885)
+    var frp = data.frp * (0.2501820753899223)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3862,16 +3859,16 @@ function node_53(data){
     // Attrib track    1.3580666979606866
     // Attrib bright_t31    -10.825437998621165
     // Attrib frp    2.559796671690744
-    data.latitude = data.latitude *(4.044371410057146);
-    data.longitude = data.longitude * (31.799411637358496);
-    data.brightness = data.brightness * (5.812662534328804);
-    data.scan = data.scan * (1.325568533694445);
-    data.track = data.track * (1.3580666979606866);
-    data.bright_t31 = data.bright_t31 * (-10.825437998621165)
-    data.frp = data.frp * (2.559796671690744)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(4.044371410057146);
+    var longitude = data.longitude * (31.799411637358496);
+    var brightness = data.brightness * (5.812662534328804);
+    var scan = data.scan * (1.325568533694445);
+    var track = data.track * (1.3580666979606866);
+    var bright_t31 = data.bright_t31 * (-10.825437998621165)
+    var frp = data.frp * (2.559796671690744)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3887,16 +3884,16 @@ function node_54(data){
     // Attrib track    2.431044761439386
     // Attrib bright_t31    -4.397599128791713
     // Attrib frp    1.8285000285060722
-    data.latitude = data.latitude *(1.8511866510227042);
-    data.longitude = data.longitude * (-2.0734316058090365);
-    data.brightness = data.brightness * (12.67941942264675);
-    data.scan = data.scan * (2.377436521216185);
-    data.track = data.track * (2.431044761439386);
-    data.bright_t31 = data.bright_t31 * (-4.397599128791713)
-    data.frp = data.frp * (1.8285000285060722)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(1.8511866510227042);
+    var longitude = data.longitude * (-2.0734316058090365);
+    var brightness = data.brightness * (12.67941942264675);
+    var scan = data.scan * (2.377436521216185);
+    var track = data.track * (2.431044761439386);
+    var bright_t31 = data.bright_t31 * (-4.397599128791713)
+    var frp = data.frp * (1.8285000285060722)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3912,16 +3909,16 @@ function node_55(data){
     // Attrib track    -3.4229501973250906
     // Attrib bright_t31    34.97767220810353
     // Attrib frp    14.101905181952844
-    data.latitude = data.latitude *(-8.473332911557016);
-    data.longitude = data.longitude * (-8.366651968055736);
-    data.brightness = data.brightness * (26.25273824505416);
-    data.scan = data.scan * (-3.280337474398192);
-    data.track = data.track * (-3.4229501973250906);
-    data.bright_t31 = data.bright_t31 * (34.97767220810353)
-    data.frp = data.frp * (14.101905181952844)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-8.473332911557016);
+    var longitude = data.longitude * (-8.366651968055736);
+    var brightness = data.brightness * (26.25273824505416);
+    var scan = data.scan * (-3.280337474398192);
+    var track = data.track * (-3.4229501973250906);
+    var bright_t31 = data.bright_t31 * (34.97767220810353)
+    var frp = data.frp * (14.101905181952844)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3937,16 +3934,16 @@ function node_56(data){
     // Attrib track    -2.626552611313777
     // Attrib bright_t31    -15.636921311685962
     // Attrib frp    19.23255826371575
-    data.latitude = data.latitude *(-5.177615974220083);
-    data.longitude = data.longitude * (1.6572891801014917);
-    data.brightness = data.brightness * (15.732255037091733);
-    data.scan = data.scan * (-2.9067162044220956);
-    data.track = data.track * (-2.626552611313777);
-    data.bright_t31 = data.bright_t31 * (-15.636921311685962)
-    data.frp = data.frp * (19.23255826371575)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-5.177615974220083);
+    var longitude = data.longitude * (1.6572891801014917);
+    var brightness = data.brightness * (15.732255037091733);
+    var scan = data.scan * (-2.9067162044220956);
+    var track = data.track * (-2.626552611313777);
+    var bright_t31 = data.bright_t31 * (-15.636921311685962)
+    var frp = data.frp * (19.23255826371575)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3962,16 +3959,16 @@ function node_57(data){
     // Attrib track    -1.9193248603570394
     // Attrib bright_t31    -29.907569490291575
     // Attrib frp    26.24634148543681
-    data.latitude = data.latitude *(-4.824693967281431);
-    data.longitude = data.longitude * (-17.107050123802907);
-    data.brightness = data.brightness * (33.16878404024094);
-    data.scan = data.scan * (-2.2322330857869646);
-    data.track = data.track * (-1.9193248603570394);
-    data.bright_t31 = data.bright_t31 * (-29.907569490291575)
-    data.frp = data.frp * (26.24634148543681)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-4.824693967281431);
+    var longitude = data.longitude * (-17.107050123802907);
+    var brightness = data.brightness * (33.16878404024094);
+    var scan = data.scan * (-2.2322330857869646);
+    var track = data.track * (-1.9193248603570394);
+    var bright_t31 = data.bright_t31 * (-29.907569490291575)
+    var frp = data.frp * (26.24634148543681)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -3987,16 +3984,16 @@ function node_58(data){
     // Attrib track    7.364320024086533
     // Attrib bright_t31    -3.3374676485078143
     // Attrib frp    6.204244870573891
-    data.latitude = data.latitude *(6.023415631553911);
-    data.longitude = data.longitude * (-41.595604236439044);
-    data.brightness = data.brightness * (1.8012742481713595);
-    data.scan = data.scan * (7.257630407669783);
-    data.track = data.track * (7.364320024086533);
-    data.bright_t31 = data.bright_t31 * (-3.3374676485078143)
-    data.frp = data.frp * (6.204244870573891)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(6.023415631553911);
+    var longitude = data.longitude * (-41.595604236439044);
+    var brightness = data.brightness * (1.8012742481713595);
+    var scan = data.scan * (7.257630407669783);
+    var track = data.track * (7.364320024086533);
+    var bright_t31 = data.bright_t31 * (-3.3374676485078143)
+    var frp = data.frp * (6.204244870573891)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4012,16 +4009,16 @@ function node_59(data){
     // Attrib track    -0.15690506506125207
     // Attrib bright_t31    22.698699309993348
     // Attrib frp    -1.0115906871174762
-    data.latitude = data.latitude *(-5.70478804965784);
-    data.longitude = data.longitude * (1.51118250071719);
-    data.brightness = data.brightness * ( 22.320938871453823);
-    data.scan = data.scan * (-0.03171213872868263);
-    data.track = data.track * (-0.15690506506125207);
-    data.bright_t31 = data.bright_t31 * (22.698699309993348)
-    data.frp = data.frp * (-1.0115906871174762)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-5.70478804965784);
+    var longitude = data.longitude * (1.51118250071719);
+    var brightness = data.brightness * ( 22.320938871453823);
+    var scan = data.scan * (-0.03171213872868263);
+    var track = data.track * (-0.15690506506125207);
+    var bright_t31 = data.bright_t31 * (22.698699309993348)
+    var frp = data.frp * (-1.0115906871174762)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4037,16 +4034,16 @@ function node_60(data){
     // Attrib track    10.009933425070036
     // Attrib bright_t31    10.020044605488545
     // Attrib frp    -69.98223706058033
-    data.latitude = data.latitude *(-4.730260860582049);
-    data.longitude = data.longitude * (16.438659550708188);
-    data.brightness = data.brightness * (5.704434576706959);
-    data.scan = data.scan * (9.945197360907859);
-    data.track = data.track * (10.009933425070036);
-    data.bright_t31 = data.bright_t31 * (10.020044605488545)
-    data.frp = data.frp * (-69.98223706058033)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-4.730260860582049);
+    var longitude = data.longitude * (16.438659550708188);
+    var brightness = data.brightness * (5.704434576706959);
+    var scan = data.scan * (9.945197360907859);
+    var track = data.track * (10.009933425070036);
+    var bright_t31 = data.bright_t31 * (10.020044605488545)
+    var frp = data.frp * (-69.98223706058033)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4062,16 +4059,16 @@ function node_61(data){
     // Attrib track    -16.542368227437077
     // Attrib bright_t31    30.534188247295567
     // Attrib frp    86.58782718577685
-    data.latitude = data.latitude *(-17.006934317029827);
-    data.longitude = data.longitude * (0.39012365895238066);
-    data.brightness = data.brightness * (-25.33744034139976);
-    data.scan = data.scan * (-16.56340109597984);
-    data.track = data.track * (-16.542368227437077);
-    data.bright_t31 = data.bright_t31 * (30.534188247295567)
-    data.frp = data.frp * (86.58782718577685)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-17.006934317029827);
+    var longitude = data.longitude * (0.39012365895238066);
+    var brightness = data.brightness * (-25.33744034139976);
+    var scan = data.scan * (-16.56340109597984);
+    var track = data.track * (-16.542368227437077);
+    var bright_t31 = data.bright_t31 * (30.534188247295567)
+    var frp = data.frp * (86.58782718577685)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4087,16 +4084,16 @@ function node_62(data){
     // Attrib track    -2.3712288647382906
     // Attrib bright_t31    12.363656415479374
     // Attrib frp    11.253279251285718
-    data.latitude = data.latitude *(-4.454752802806393);
-    data.longitude = data.longitude * (-7.658454547954746);
-    data.brightness = data.brightness * (7.583249447265163);
-    data.scan = data.scan * (-2.285913324670827);
-    data.track = data.track * (-2.3712288647382906);
-    data.bright_t31 = data.bright_t31 * (12.363656415479374)
-    data.frp = data.frp * (11.253279251285718)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-4.454752802806393);
+    var longitude = data.longitude * (-7.658454547954746);
+    var brightness = data.brightness * (7.583249447265163);
+    var scan = data.scan * (-2.285913324670827);
+    var track = data.track * (-2.3712288647382906);
+    var bright_t31 = data.bright_t31 * (12.363656415479374)
+    var frp = data.frp * (11.253279251285718)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4112,16 +4109,16 @@ function node_63(data){
     // Attrib track    9.577454368526642
     // Attrib bright_t31    -35.329806700303095
     // Attrib frp    -14.719738194715083
-    data.latitude = data.latitude *(5.965452128484002);
-    data.longitude = data.longitude * (8.845420840188705);
-    data.brightness = data.brightness * (-21.335207070272176);
-    data.scan = data.scan * (8.995271694466942);
-    data.track = data.track * (9.577454368526642);
-    data.bright_t31 = data.bright_t31 * (-35.329806700303095)
-    data.frp = data.frp * (-14.719738194715083)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(5.965452128484002);
+    var longitude = data.longitude * (8.845420840188705);
+    var brightness = data.brightness * (-21.335207070272176);
+    var scan = data.scan * (8.995271694466942);
+    var track = data.track * (9.577454368526642);
+    var bright_t31 = data.bright_t31 * (-35.329806700303095)
+    var frp = data.frp * (-14.719738194715083)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4137,16 +4134,16 @@ function node_64(data){
     // Attrib track    3.4427248260769194
     // Attrib bright_t31    -8.87541332039951
     // Attrib frp    2.4270598897777393
-    data.latitude = data.latitude *(2.4982140036832883);
-    data.longitude = data.longitude * (-3.1384016745919587);
-    data.brightness = data.brightness * (14.042564748723697);
-    data.scan = data.scan * (3.472481243547863);
-    data.track = data.track * (3.4427248260769194);
-    data.bright_t31 = data.bright_t31 * (-8.87541332039951)
-    data.frp = data.frp * (2.4270598897777393)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(2.4982140036832883);
+    var longitude = data.longitude * (-3.1384016745919587);
+    var brightness = data.brightness * (14.042564748723697);
+    var scan = data.scan * (3.472481243547863);
+    var track = data.track * (3.4427248260769194);
+    var bright_t31 = data.bright_t31 * (-8.87541332039951)
+    var frp = data.frp * (2.4270598897777393)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4162,16 +4159,16 @@ function node_65(data){
     // Attrib track    2.0819912661756446
     // Attrib bright_t31    -48.01012930786521
     // Attrib frp    7.7380082537105634
-    data.latitude = data.latitude *(0.23697939114760663);
-    data.longitude = data.longitude * (-2.6786135274327836);
-    data.brightness = data.brightness * (19.902203216046082);
-    data.scan = data.scan * (2.050535330820259);
-    data.track = data.track * (2.0819912661756446);
-    data.bright_t31 = data.bright_t31 * (-48.01012930786521)
-    data.frp = data.frp * (7.7380082537105634)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(0.23697939114760663);
+    var longitude = data.longitude * (-2.6786135274327836);
+    var brightness = data.brightness * (19.902203216046082);
+    var scan = data.scan * (2.050535330820259);
+    var track = data.track * (2.0819912661756446);
+    var bright_t31 = data.bright_t31 * (-48.01012930786521)
+    var frp = data.frp * (7.7380082537105634)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4187,16 +4184,16 @@ function node_66(data){
     // Attrib track    -2.697060951028806
     // Attrib bright_t31    60.14468306029832
     // Attrib frp    -13.096490246330841
-    data.latitude = data.latitude *(-4.177333895812951);
-    data.longitude = data.longitude * (-0.06386673755907031);
-    data.brightness = data.brightness * (-24.56166110334421);
-    data.scan = data.scan * (-1.3511474743648206);
-    data.track = data.track * (-2.697060951028806);
-    data.bright_t31 = data.bright_t31 * (60.14468306029832)
-    data.frp = data.frp * (-13.096490246330841)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-4.177333895812951);
+    var longitude = data.longitude * (-0.06386673755907031);
+    var brightness = data.brightness * (-24.56166110334421);
+    var scan = data.scan * (-1.3511474743648206);
+    var track = data.track * (-2.697060951028806);
+    var bright_t31 = data.bright_t31 * (60.14468306029832)
+    var frp = data.frp * (-13.096490246330841)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4212,16 +4209,16 @@ function node_67(data){
     // Attrib track    8.925481601858351
     // Attrib bright_t31    6.070450142715338
     // Attrib frp    -49.594332155699874
-    data.latitude = data.latitude *(15.61806658117208);
-    data.longitude = data.longitude * (-0.11182808979684823);
-    data.brightness = data.brightness * (-1.9956208336950472);
-    data.scan = data.scan * (7.99256888488189);
-    data.track = data.track * (8.925481601858351);
-    data.bright_t31 = data.bright_t31 * (6.070450142715338)
-    data.frp = data.frp * (-49.594332155699874)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(15.61806658117208);
+    var longitude = data.longitude * (-0.11182808979684823);
+    var brightness = data.brightness * (-1.9956208336950472);
+    var scan = data.scan * (7.99256888488189);
+    var track = data.track * (8.925481601858351);
+    var bright_t31 = data.bright_t31 * (6.070450142715338)
+    var frp = data.frp * (-49.594332155699874)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4237,16 +4234,16 @@ function node_68(data){
     // Attrib track    -2.2686885974605713
     // Attrib bright_t31    13.926115615425246
     // Attrib frp    19.506920736026746
-    data.latitude = data.latitude *(-0.8789578508148778);
-    data.longitude = data.longitude * (-2.0410809214703205);
-    data.brightness = data.brightness * (-22.304200897305083);
-    data.scan = data.scan * (-1.9241590652359317);
-    data.track = data.track * (-2.2686885974605713);
-    data.bright_t31 = data.bright_t31 * (13.926115615425246)
-    data.frp = data.frp * (19.506920736026746)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-0.8789578508148778);
+    var longitude = data.longitude * (-2.0410809214703205);
+    var brightness = data.brightness * (-22.304200897305083);
+    var scan = data.scan * (-1.9241590652359317);
+    var track = data.track * (-2.2686885974605713);
+    var bright_t31 = data.bright_t31 * (13.926115615425246)
+    var frp = data.frp * (19.506920736026746)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4262,16 +4259,16 @@ function node_69(data){
     // Attrib track    10.7508378846025
     // Attrib bright_t31    -8.102073876610948
     // Attrib frp    -15.019535509851371
-    data.latitude = data.latitude *(15.919209926274013);
-    data.longitude = data.longitude * (11.505414280915625);
-    data.brightness = data.brightness * (-40.06685408327457);
-    data.scan = data.scan * (10.365656356620702);
-    data.track = data.track * (10.7508378846025);
-    data.bright_t31 = data.bright_t31 * (-8.102073876610948)
-    data.frp = data.frp * (-15.019535509851371)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(15.919209926274013);
+    var longitude = data.longitude * (11.505414280915625);
+    var brightness = data.brightness * (-40.06685408327457);
+    var scan = data.scan * (10.365656356620702);
+    var track = data.track * (10.7508378846025);
+    var bright_t31 = data.bright_t31 * (-8.102073876610948)
+    var frp = data.frp * (-15.019535509851371)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4287,16 +4284,16 @@ function node_70(data){
     // Attrib track    -0.9463255632857313
     // Attrib bright_t31    3.8821575215004875
     // Attrib frp    9.271564684060875
-    data.latitude = data.latitude *(-3.0729146910607237);
-    data.longitude = data.longitude * (10.80549672534777);
-    data.brightness = data.brightness * (17.41530365574811);
-    data.scan = data.scan * (-0.9246661972044797);
-    data.track = data.track * (-0.9463255632857313);
-    data.bright_t31 = data.bright_t31 * (3.8821575215004875)
-    data.frp = data.frp * (9.271564684060875)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-3.0729146910607237);
+    var longitude = data.longitude * (10.80549672534777);
+    var brightness = data.brightness * (17.41530365574811);
+    var scan = data.scan * (-0.9246661972044797);
+    var track = data.track * (-0.9463255632857313);
+    var bright_t31 = data.bright_t31 * (3.8821575215004875)
+    var frp = data.frp * (9.271564684060875)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4312,16 +4309,16 @@ function node_71(data){
     // Attrib track    10.989258583003704
     // Attrib bright_t31    -55.029363791510455
     // Attrib frp    -5.140399582299592
-    data.latitude = data.latitude *(2.4082952360544905);
-    data.longitude = data.longitude * (2.1582750813511202);
-    data.brightness = data.brightness * (-32.68778755946685);
-    data.scan = data.scan * (10.242442961264802);
-    data.track = data.track * (10.989258583003704);
-    data.bright_t31 = data.bright_t31 * (-55.029363791510455)
-    data.frp = data.frp * (-5.140399582299592)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(2.4082952360544905);
+    var longitude = data.longitude * (2.1582750813511202);
+    var brightness = data.brightness * (-32.68778755946685);
+    var scan = data.scan * (10.242442961264802);
+    var track = data.track * (10.989258583003704);
+    var bright_t31 = data.bright_t31 * (-55.029363791510455)
+    var frp = data.frp * (-5.140399582299592)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4337,16 +4334,16 @@ function node_72(data){
     // Attrib track    3.418753920539262
     // Attrib bright_t31    -38.50747799190716
     // Attrib frp    15.40258678892817
-    data.latitude = data.latitude *(2.8374776576147585);
-    data.longitude = data.longitude * (-12.192476110138397);
-    data.brightness = data.brightness * (-2.51429224467518);
-    data.scan = data.scan * (3.7641744842549483);
-    data.track = data.track * (3.418753920539262);
-    data.bright_t31 = data.bright_t31 * (-38.50747799190716)
-    data.frp = data.frp * (15.40258678892817)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(2.8374776576147585);
+    var longitude = data.longitude * (-12.192476110138397);
+    var brightness = data.brightness * (-2.51429224467518);
+    var scan = data.scan * (3.7641744842549483);
+    var track = data.track * (3.418753920539262);
+    var bright_t31 = data.bright_t31 * (-38.50747799190716)
+    var frp = data.frp * (15.40258678892817)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4362,16 +4359,16 @@ function node_73(data){
     // Attrib track    -9.970951230410098
     // Attrib bright_t31    56.245003695252144
     // Attrib frp    30.095828863492056
-    data.latitude = data.latitude *(-10.354812180310432);
-    data.longitude = data.longitude * (2.251140155169961);
-    data.brightness = data.brightness * (-19.26897899245415);
-    data.scan = data.scan * (-9.54515442105534);
-    data.track = data.track * (-9.970951230410098);
-    data.bright_t31 = data.bright_t31 * (56.245003695252144)
-    data.frp = data.frp * (30.095828863492056)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-10.354812180310432);
+    var longitude = data.longitude * (2.251140155169961);
+    var brightness = data.brightness * (-19.26897899245415);
+    var scan = data.scan * (-9.54515442105534);
+    var track = data.track * (-9.970951230410098);
+    var bright_t31 = data.bright_t31 * (56.245003695252144)
+    var frp = data.frp * (30.095828863492056)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4387,16 +4384,16 @@ function node_74(data){
     // Attrib track    10.211650537877487
     // Attrib bright_t31    -15.520401157727985
     // Attrib frp    -16.268975823512136
-    data.latitude = data.latitude *(14.043386701784078);
-    data.longitude = data.longitude * (12.312727790795432);
-    data.brightness = data.brightness * (-34.2219008349121);
-    data.scan = data.scan * (9.865905403562495);
-    data.track = data.track * (10.211650537877487);
-    data.bright_t31 = data.bright_t31 * (-15.520401157727985)
-    data.frp = data.frp * (-16.268975823512136)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(14.043386701784078);
+    var longitude = data.longitude * (12.312727790795432);
+    var brightness = data.brightness * (-34.2219008349121);
+    var scan = data.scan * (9.865905403562495);
+    var track = data.track * (10.211650537877487);
+    var bright_t31 = data.bright_t31 * (-15.520401157727985)
+    var frp = data.frp * (-16.268975823512136)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4412,16 +4409,16 @@ function node_75(data){
     // Attrib track    4.066623077149515
     // Attrib bright_t31    -28.920860094002833
     // Attrib frp    1.1280257443598511
-    data.latitude = data.latitude *(3.6341206108510766);
-    data.longitude = data.longitude * (6.420341296741633);
-    data.brightness = data.brightness * (-7.3813224302808305);
-    data.scan = data.scan * (3.7307894543125757);
-    data.track = data.track * (4.066623077149515);
-    data.bright_t31 = data.bright_t31 * (-28.920860094002833)
-    data.frp = data.frp * (1.1280257443598511)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(3.6341206108510766);
+    var longitude = data.longitude * (6.420341296741633);
+    var brightness = data.brightness * (-7.3813224302808305);
+    var scan = data.scan * (3.7307894543125757);
+    var track = data.track * (4.066623077149515);
+    var bright_t31 = data.bright_t31 * (-28.920860094002833)
+    var frp = data.frp * (1.1280257443598511)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4437,16 +4434,16 @@ function node_76(data){
     // Attrib track    2.437235587463394
     // Attrib bright_t31    14.328378826477893
     // Attrib frp    -35.75608126648506
-    data.latitude = data.latitude *(7.6867045151044735);
-    data.longitude = data.longitude * (14.881962933191007);
-    data.brightness = data.brightness * (22.131620652329776);
-    data.scan = data.scan * (1.854785436342553);
-    data.track = data.track * (2.437235587463394);
-    data.bright_t31 = data.bright_t31 * (14.328378826477893)
-    data.frp = data.frp * (-35.75608126648506)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(7.6867045151044735);
+    var longitude = data.longitude * (14.881962933191007);
+    var brightness = data.brightness * (22.131620652329776);
+    var scan = data.scan * (1.854785436342553);
+    var track = data.track * (2.437235587463394);
+    var bright_t31 = data.bright_t31 * (14.328378826477893)
+    var frp = data.frp * (-35.75608126648506)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4462,16 +4459,16 @@ function node_77(data){
     // Attrib track    -2.720082530357011
     // Attrib bright_t31    -21.55587115909134
     // Attrib frp    -1.7683950778254118
-    data.latitude = data.latitude *(-5.675052796598328);
-    data.longitude = data.longitude * (35.03592247433167);
-    data.brightness = data.brightness * (10.201402053530913);
-    data.scan = data.scan * (-2.438484229744572);
-    data.track = data.track * (-2.720082530357011);
-    data.bright_t31 = data.bright_t31 * (-21.55587115909134)
-    data.frp = data.frp * (-1.7683950778254118)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(-5.675052796598328);
+    var longitude = data.longitude * (35.03592247433167);
+    var brightness = data.brightness * (10.201402053530913);
+    var scan = data.scan * (-2.438484229744572);
+    var track = data.track * (-2.720082530357011);
+    var bright_t31 = data.bright_t31 * (-21.55587115909134)
+    var frp = data.frp * (-1.7683950778254118)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4487,16 +4484,16 @@ function node_78(data){
     // Attrib track    3.416715486115267
     // Attrib bright_t31    0.2812909007199721
     // Attrib frp    2.9960342753419438
-    data.latitude = data.latitude *(2.6337389489690977);
-    data.longitude = data.longitude * (23.822544438110196);
-    data.brightness = data.brightness * (5.6004203402610795);
-    data.scan = data.scan * (3.5044603853580067);
-    data.track = data.track * (3.416715486115267);
-    data.bright_t31 = data.bright_t31 * (0.2812909007199721)
-    data.frp = data.frp * (2.9960342753419438)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(2.6337389489690977);
+    var longitude = data.longitude * (23.822544438110196);
+    var brightness = data.brightness * (5.6004203402610795);
+    var scan = data.scan * (3.5044603853580067);
+    var track = data.track * (3.416715486115267);
+    var bright_t31 = data.bright_t31 * (0.2812909007199721)
+    var frp = data.frp * (2.9960342753419438)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;
@@ -4512,16 +4509,16 @@ function node_79(data){
     // Attrib track    2.017750859929425
     // Attrib bright_t31    -42.9475542104296
     // Attrib frp    7.52050768963884
-    data.latitude = data.latitude *(3.2714158601613432);
-    data.longitude = data.longitude * (2.311304043809776);
-    data.brightness = data.brightness * (32.574219385803495);
-    data.scan = data.scan * (1.7703257572500888);
-    data.track = data.track * (2.017750859929425);
-    data.bright_t31 = data.bright_t31 * (-42.9475542104296)
-    data.frp = data.frp * (7.52050768963884)
-    var sum = (data.latitude+data.longitude+data.brightness+data.scan+data.track+data.bright_t31+data.frp)
+    var latitude = data.latitude *(3.2714158601613432);
+    var longitude = data.longitude * (2.311304043809776);
+    var brightness = data.brightness * (32.574219385803495);
+    var scan = data.scan * (1.7703257572500888);
+    var track = data.track * (2.017750859929425);
+    var bright_t31 = data.bright_t31 * (-42.9475542104296)
+    var frp = data.frp * (7.52050768963884)
+    var sum = (latitude+longitude+brightness+scan+track+bright_t31+frp)
     sum = activate(sum)
-    if(sum < Threshold){
+    if(sum > Threshold){
         return 0;
     }else{
         return 1;

@@ -11,6 +11,42 @@ const post = new Client({
 
 post.connect();
 
+function checktime(){
+    var date_req;
+    var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })//time zone
+    var now = new Date(Bangkok);
+    var D = now.getDate();
+    var M = now.getMonth()+1;
+    var Y = now.getFullYear();
+    // checks day,month,year
+    if(M>=1 && M<=9){
+        M = '0'+M;
+        }
+    if(D>=1 && D<=9){
+        D = '0'+ D;
+        }
+
+    if(M==02){
+        if ( (!(Y % 4) && Y % 100) || !(Y % 400)){
+            day = 29;
+    }else{
+            day = 28;
+        }
+    }else if(M==04||M==06||M==09||M==11){
+        day = 30;
+    }else if(M==01||M==03||M==05||M==07||M==08||M==10||M==12){
+        day = 31;
+    }
+    
+    if(date_req === undefined){
+        date_req = Y+'-'+M+'-'+D;  // checks day no undefined
+    }else{
+        date_req = date_req; // day now
+    }
+    return date_req
+}
+
+
 function countm() {
     var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })
     var now = new Date(Bangkok);
@@ -53,7 +89,7 @@ function countm() {
                         let nn = ii.toString();
                         post.query("INSERT INTO count_ym (year_name,month_name) VALUES("+Y+","+nn+")");
                     }
-                    console.log("INSERT month and year Success!!");
+                    console.log("INSERT month and year Success time : "+checktime());
                 }    
             }
             })
@@ -66,7 +102,7 @@ function countm() {
         .then(results =>  {
             count_month= results.rows;
             post.query("UPDATE count_ym SET month = "+count_month[0].count+" where month_name = '"+M+"' AND year_name = '"+Y+"' ");
-            console.log("UPDATE count_month "+M+" : "+count_month[0].count);
+            console.log("UPDATE count_month "+M+" : "+count_month[0].count+" time : "+checktime());
             })
 
 }//end FIRMS_auto
@@ -105,7 +141,7 @@ function county(){
     .then(results => {
         count_year= results.rows;
         post.query("UPDATE count_ym SET year = "+count_year[0].count+" where month_name BETWEEN '01' AND '12' AND year_name = '"+Y+"' ");
-        console.log("count_year "+Y+" : "+count_year[0].count);
+        console.log("count_year "+Y+" : "+count_year[0].count + " time : "+checktime());
         })
 }
 

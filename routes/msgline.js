@@ -62,7 +62,7 @@ function postdata() {
       post.query("SELECT plg.adm2_th,pts.latitude,pts.longitude,pts.frp,pts.brightness,pts.scan,pts.bright_t31,pts.confidence \
       FROM thailand plg JOIN FIRMS_auto pts \
       ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) AND \
-      pts.satellite_date = '"+date_req+"' AND plg.adm1_th = 'เชียงราย' AND plg.adm2_th = 'เมืองเชียงราย' AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
+      pts.satellite_date = '"+date_req+"'  AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
       .then(results => {
           var data = results.rows;
           ai.dataa(results.rows)
@@ -70,10 +70,12 @@ function postdata() {
           var count_f;
             for(count_ai in ai.ans_data){};
                 
+            // AND plg.adm1_th = 'เชียงราย' AND plg.adm2_th = 'เมืองเชียงราย'
+            // AND gid = '400'
             post.query("SELECT plg.adm2_th,pts.latitude,pts.longitude,pts.frp,pts.brightness,pts.scan,pts.bright_t31,pts.confidence \
                 FROM thailand plg JOIN FIRMS_auto pts \
                 ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) AND \
-                pts.satellite_date = '"+date_req+"' AND plg.adm1_th = 'เชียงราย' AND plg.adm2_th = 'เมืองเชียงราย' AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
+                pts.satellite_date = '"+date_req+"'  AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
                 .then(results => {
                   var fire = results.rows;
                   for(var index in fire){

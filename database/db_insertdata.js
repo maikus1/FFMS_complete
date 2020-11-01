@@ -22,6 +22,41 @@ var dayr = Math.floor(diff / oneDay);
 dayr = dayr;//milisec of year
 var Y = now.getFullYear();
 
+function checktime(){
+    var date_req;
+    var Bangkok = new Date().toLocaleString('en-TH', { timeZone: 'Asia/Bangkok' })//time zone
+    var now = new Date(Bangkok);
+    var D = now.getDate();
+    var M = now.getMonth()+1;
+    var Y = now.getFullYear();
+    // checks day,month,year
+    if(M>=1 && M<=9){
+        M = '0'+M;
+        }
+    if(D>=1 && D<=9){
+        D = '0'+ D;
+        }
+
+    if(M==02){
+        if ( (!(Y % 4) && Y % 100) || !(Y % 400)){
+            day = 29;
+    }else{
+            day = 28;
+        }
+    }else if(M==04||M==06||M==09||M==11){
+        day = 30;
+    }else if(M==01||M==03||M==05||M==07||M==08||M==10||M==12){
+        day = 31;
+    }
+    
+    if(date_req === undefined){
+        date_req = Y+'-'+M+'-'+D;  // checks day no undefined
+    }else{
+        date_req = date_req; // day now
+    }
+    return date_req
+}
+
 function noaa_auto() {
     const noaa_url = 'https://nrt3.modaps.eosdis.nasa.gov/api/v2/content/archives/FIRMS/noaa-20-viirs-c2/SouthEast_Asia/J1_VIIRS_C2_SouthEast_Asia_VJ114IMGTDL_NRT_'+Y+dayr+'.txt';
     request({
@@ -34,7 +69,7 @@ function noaa_auto() {
             if(err) {
                 return console.log(err);
             }
-            console.log("Savee noaa!!!");
+            console.log("Savee noaa time : "+checktime());
         });
 
         const csvStream_noaa = fs.createReadStream('./database/data_fire/noaa_auto.txt')
@@ -70,7 +105,7 @@ function noaa_auto() {
             }
         csvStream_noaa.resume();
         }).on("end", function(){
-            console.log("Success noaa!!!");
+            console.log("Success noaa time : "+checktime());
         }).on("error", function(err){
             console.log(err);
         });//end insert database
@@ -89,7 +124,7 @@ function viirs_auto() {
             if(err) {
                 return console.log(err);
             }
-            console.log("Savee viirs!!!");
+            console.log("Savee viirs time : "+checktime());
         });
 
         const csvStream_viirs = fs.createReadStream('./database/data_fire/viirs_auto.txt')
@@ -125,7 +160,7 @@ function viirs_auto() {
             }
         csvStream_viirs.resume();
         }).on("end", function(){
-            console.log("Success viirs!!");
+            console.log("Success viirs time : "+checktime());
         }).on("error", function(err){
             console.log(err);
         });//end insert database
@@ -144,7 +179,7 @@ function suomi_auto() {
             if(err) {
                 return console.log(err);
             }
-            console.log("Savee suomi!!!");
+            console.log("Savee suomi time : "+checktime());
         });
 
         const csvStream_suomi = fs.createReadStream('./database/data_fire/suomi_auto.txt')
@@ -199,7 +234,7 @@ function modis_c6_auto() {
             if(err) {
                 return console.log(err);
             }
-            console.log("Savee modis!!!");
+            console.log("Savee modis time : "+checktime());
         });
         const csvStream_modis = fs.createReadStream('./database/data_fire/modis_c6_auto.txt')
         .pipe(csv.parse({ headers: true }))
@@ -234,7 +269,7 @@ function modis_c6_auto() {
             }
         csvStream_modis.resume();
         }).on("end", function(){
-            console.log("Success modis!!");
+            console.log("Success modis time : "+checktime());
         }).on("error", function(err){
             console.log(err);
         });//end insert database

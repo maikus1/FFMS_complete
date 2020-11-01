@@ -4,6 +4,7 @@ var path = require('path');
 var db_insert = require('./database/db_insertdata');
 var db_up = require('./database/db_update');
 var db_rank = require('./database/db_rank');
+var ai = require('./model/ai')
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 var logger = require('morgan');
