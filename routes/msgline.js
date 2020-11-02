@@ -26,83 +26,72 @@ if(D>=1 && D<=9){
     D = '0'+ D;
     }
 
-    var date_req = Y+'-'+M+'-'+D; 
+  var date_req = Y+'-'+M+'-'+D; 
 
-if(M==02){
-    if ( (!(Y % 4) && Y % 100) || !(Y % 400)){
-        day = 29;
-}else{
-        day = 28;
-    }
-}else if(M==04||M==06||M==09||M==11){
-    day = 30;
-}else if(M==01||M==03||M==05||M==07||M==08||M==10||M==12){
-    day = 31;
-}
+  var H = now.getHours()-13;// time hour now
+  var Ho = now.getHours()-14; //time hour now -1
+  H = parseInt(H)
+  Ho = parseInt(Ho);
 
-var timehour = now.getHours(); // time hour now
-var timemin = now.getMinutes(); // time min now
-var timehourold; // time hour -1 if(minute < 0)
-var timeminold; // before time 30 minute 
-var checktext = [];
-
-timeminold = timemin-30;
-
-if(timeminold < 0){
-  timehourold = timehour-1;
-  timeminold = timeminold+60;
-  if(timehourold < 0){
-    timehourold = 23;
+  if(H < 0){
+    H = H+24
   }
-}else{
-  timehourold = timehour;
-}
+  if(Ho < 0){
+    Ho = Ho+24
+  }
 
 function postdata() {
-      post.query("SELECT plg.adm2_th,pts.latitude,pts.longitude,pts.frp,pts.brightness,pts.scan,pts.bright_t31,pts.confidence \
+      // AND plg.adm1_th = 'เชียงราย' AND plg.adm2_th = 'เมืองเชียงราย'
+      // AND gid = '400'
+      // AND pts.acq_time between '"+H+":00:00' AND '"+Ho+":00:00'
+      post.query("SELECT plg.adm2_th,pts.latitude,pts.longitude,pts.frp,pts.brightness,pts.scan,pts.bright_t31,pts.confidence,pts.acq_time \
       FROM thailand plg JOIN FIRMS_auto pts \
       ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) AND \
-      pts.satellite_date = '"+date_req+"'  AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
+      pts.satellite_date = '"+date_req+"' AND pts.acq_time between '"+Ho+":00:00' AND '"+H+":00:00'")
       .then(results => {
-          var data = results.rows;
           ai.dataa(results.rows)
-          var count_ai;
-          var count_f;
-            for(count_ai in ai.ans_data){};
-                
-            // AND plg.adm1_th = 'เชียงราย' AND plg.adm2_th = 'เมืองเชียงราย'
-            // AND gid = '400'
-            post.query("SELECT plg.adm2_th,pts.latitude,pts.longitude,pts.frp,pts.brightness,pts.scan,pts.bright_t31,pts.confidence \
-                FROM thailand plg JOIN FIRMS_auto pts \
-                ON ST_Within(ST_MakePoint(pts.longitude, pts.latitude), plg.geom) AND \
-                pts.satellite_date = '"+date_req+"'  AND pts.insert_time between '"+timehourold+":"+timeminold+":00' AND '"+timehour+":"+timemin+":00'")
-                .then(results => {
-                  var fire = results.rows;
-                  for(var index in fire){
-                    if(ai.ans_data[index] == 1){
-                      if((fire[index].confidence == 'high')||(fire[index].confidence >= 70)){
-                          checktext[index] = 'โอกาสเกิดไฟสูง';
-                      }else if((fire[index].confidence == 'nominal')||(fire[index].confidence >= 30)){
-                          checktext[index] = 'โอกาสปานกลาง';
-                      }else{
-                          checktext[index] = 'โอกาสต่ำ ';
-                      }
-                    }else{
-                      checktext[index] = 'โอกาสต่ำ ';
-                    }
-                  } 
-                  for(count_f in fire){};
-                  if(count_ai == count_f){
-                     linebot(fire,checktext)
-                  }
-                })// end query data
-            }) // end query ai
+          for(var index in ai.data){
+            if(ai.data[index].ans == 0){
+              if(((ai.data[index].confidence == 'high')||(ai.data[index].confidence>=80))){
+                if(ai.data[index].confidence == 'high'){
+                  ai.data[index].confidence = 80;
+                }
+             }else if((ai.data[index].confidence == 'nominal')||(ai.data[index].confidence>=50)){
+                if(ai.data[index].confidence == 'nominal'){
+                  ai.data[index].confidence = 50;
+                }
+             }else if((ai.data[index].confidence == 'low')||(ai.data[index].confidence>=20)){
+                if(ai.data[index].confidence == 'low'){
+                  ai.data[index].confidence = 20;
+                }
+             }else{
+                ai.data[index].confidence = 0;
+              }
+            }else{
+              if(((ai.data[index].confidence == 'high')||(ai.data[index].confidence>=80))){
+                if(ai.data[index].confidence == 'high'){
+                  ai.data[index].confidence = 80;
+                }
+              }else if((ai.data[index].confidence == 'nominal')||(ai.data[index].confidence>=30)){
+                if(ai.data[index].confidence == 'nominal'){
+                  ai.data[index].confidence = 50;
+                }
+              }else{
+                if(ai.data[index].confidence == 'low'){
+                  ai.data[index].confidence = 20;
+                }
+              }
+            }
+          }// end for
+          var fire = ai.data;
+          linebot(fire);
+        }) // end query ai
+        
 }
 
-function linebot(data,check){
+function linebot(data){
     for(var index in data){
         var datatext = data[index];
-        var checktext = check[index];
         request({
             method: 'POST',
             uri: 'https://notify-api.line.me/api/notify',
@@ -116,7 +105,7 @@ function linebot(data,check){
               message: 'อำเภอ : ' +datatext.adm2_th+
                   '\nละติจูด : ' +datatext.latitude+
                   '\nลองจิจูด : ' +datatext.longitude+
-              '\nไฟป่าที่จะเกิด :'+checktext
+                  '\nโอกาสที่จะเกิดไฟป่า :'+datatext.confidence+" %"
               //ข้อความที่จะส่ง
             },
           }, (err, httpResponse, body) => {
@@ -129,7 +118,7 @@ function linebot(data,check){
     }
 }
 
-setInterval(postdata, 1800000)
+setInterval(postdata, 3600000)
 
 
 module.exports = router;
